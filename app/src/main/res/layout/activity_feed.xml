@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activities.FeedActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登陆"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="16sp"
+        android:textColor="#FF9800" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/two_tab"
@@ -15,15 +24,17 @@
         app:tabGravity="center" />
 
     <View
+        android:id="@+id/line"
+        android:layout_below="@+id/two_tab"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#1E161823" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/two_page"
+        android:layout_below="@+id/line"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent" />
 
 <!--    <androidx.appcompat.widget.Toolbar-->
 <!--        android:id="@+id/toolbar"-->
@@ -38,4 +49,4 @@
 
 
 
-</LinearLayout>
+</RelativeLayout>
