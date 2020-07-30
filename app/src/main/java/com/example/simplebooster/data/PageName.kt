@@ -15,6 +15,8 @@ class PageName {
         names.add("同城")
         names.add("抽奖")
         names.add("搞笑")
+        names.add("关注")
+        names.add("热门")
     }
 
 

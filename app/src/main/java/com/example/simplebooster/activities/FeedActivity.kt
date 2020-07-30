@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.simplebooster.R
 import com.example.simplebooster.adapters.ContentPagerAdapter
+import com.example.simplebooster.adapters.TwoPagerAdapter
 import com.example.simplebooster.data.FeedMessage
 import com.example.simplebooster.network.MessageService
 import com.example.simplebooster.network.ServiceCreator
@@ -13,6 +14,7 @@ import com.example.simplebooster.data.PageName
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_feed.*
+import kotlinx.android.synthetic.main.page_two_tab.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -30,8 +32,6 @@ class FeedActivity : AppCompatActivity(), CoroutineScope {
         job = Job()
         setContentView(R.layout.activity_feed)
 
-        setSupportActionBar(toolbar)
-
         //runBlocking { withContext(Dispatchers.IO) { getJson() } }
         val messageService = ServiceCreator.create(MessageService::class.java)
         runBlocking {
@@ -41,7 +41,7 @@ class FeedActivity : AppCompatActivity(), CoroutineScope {
 
             if (result.isSuccessful){
                 messageList = result.body()!! as ArrayList<FeedMessage>
-                content_pageAdapter.adapter = ContentPagerAdapter(messageList)
+                two_page.adapter = TwoPagerAdapter(messageList)
             }
         }
 
@@ -50,9 +50,9 @@ class FeedActivity : AppCompatActivity(), CoroutineScope {
 //        else
 //            Log.d("feedactivity", "no message")
 
-        tabLayout = findViewById(R.id.tabs)
-        TabLayoutMediator(tabLayout, content_pageAdapter) { tab, position ->
-            tab.text = PageName().getName(position)
+        tabLayout = findViewById(R.id.two_tab)
+        TabLayoutMediator(tabLayout, two_page) { tab, position ->
+            tab.text = PageName().getName(position + 4)
         }.attach()
 
 
