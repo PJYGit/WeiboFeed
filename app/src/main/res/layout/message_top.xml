@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/head" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/photo"
+        android:text="央视新闻"
+        android:textColor="#EE9700"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/vip"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/nickname"
+        android:src="@drawable/vip" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nickname"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@+id/photo"
+        android:text="55分钟前"
+        android:textColor="#737275"
+        android:textSize="10sp" />
+
+    <Button
+        android:layout_width="70dp"
+        android:layout_height="26dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/button_edge"
+        android:text="+ 关注"
+        android:textColor="#EE9700"
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
+        android:src="@drawable/delete" />
+
+    <com.ctetin.expandabletextviewlibrary.ExpandableTextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/photo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="15sp"
+        app:ep_contract_color="@color/colorAccent"
+        app:ep_contract_text="收回"
+        app:ep_expand_color="#03D3DA"
+        app:ep_expand_text="...全文"
+        app:ep_max_line="3"
+        app:ep_need_always_showright="true"
+        app:ep_need_animation="true"
+        app:ep_need_contract="true"
+        app:ep_need_expand="true" />
+
+</RelativeLayout>

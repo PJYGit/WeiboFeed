@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include layout="@layout/message_top" />
+
+    <com.example.simplebooster.layouts.NineGridViewGroup
+        android:id="@+id/nineGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:paddingStart="0dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="5dp" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#1E161823" />
+
+    <include layout="@layout/message_bottom" />
+
+    <View
+        android:layout_below="@+id/fcl"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#1E161823"/>
+
+</LinearLayout>
