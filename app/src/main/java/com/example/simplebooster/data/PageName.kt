@@ -1,5 +1,6 @@
 package com.example.simplebooster.data
 
+// 为方便使用 TODO: 待抽离到strings.xml
 class PageName {
     companion object{
         val temp: String =

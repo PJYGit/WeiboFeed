@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.viewpager2.widget.ViewPager2
 import com.example.simplebooster.R
 import com.example.simplebooster.adapters.ContentPagerAdapter
 import com.example.simplebooster.adapters.TwoPagerAdapter
@@ -41,7 +42,7 @@ class FeedActivity : AppCompatActivity(), CoroutineScope {
 
             if (result.isSuccessful){
                 messageList = result.body()!! as ArrayList<FeedMessage>
-                two_page.adapter = TwoPagerAdapter(messageList)
+                two_page.adapter = TwoPagerAdapter(messageList, two_page)
             }
         }
 
@@ -55,6 +56,29 @@ class FeedActivity : AppCompatActivity(), CoroutineScope {
             tab.text = PageName().getName(position + 4)
         }.attach()
 
+        two_page.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == 1){
+                    content_pager.currentItem = 0
+                    two_page.isUserInputEnabled = (two_page.currentItem < 1)
+                } else {
+                    two_page.isUserInputEnabled = true
+                }
+            }
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+            }
+        })
 
     }
 

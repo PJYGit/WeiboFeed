@@ -13,7 +13,7 @@ import com.example.simplebooster.R
 import com.example.simplebooster.data.FeedMessage
 import java.lang.IllegalArgumentException
 
-class TwoPagerAdapter(val messages: ArrayList<FeedMessage>) :
+class TwoPagerAdapter(val messages: ArrayList<FeedMessage>, val father_pager: ViewPager2) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class HotViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -48,7 +48,36 @@ class TwoPagerAdapter(val messages: ArrayList<FeedMessage>) :
                 TabLayoutMediator(holder.tabs, holder.content_pager) { tab, position ->
                     tab.text = PageName().getName(position)
                 }.attach()
-                holder.content_pager.bringToFront()
+
+                holder.content_pager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+                    private var currentPosition = 0
+                    private var oldPosition = 0
+
+                    override fun onPageScrolled(
+                        position: Int,
+                        positionOffset: Float,
+                        positionOffsetPixels: Int
+                    ) {
+                        super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                        currentPosition = position
+                    }
+
+                    override fun onPageScrollStateChanged(state: Int) {
+                        super.onPageScrollStateChanged(state)
+                        if (state == ViewPager2.SCROLL_STATE_IDLE) {
+                            if (currentPosition == oldPosition){
+                                // 子ViewPager到达第一个继续左滑 -> 进入父ViewPager
+                                when (currentPosition) {
+                                    0 -> {
+                                        father_pager.currentItem = 0
+                                    }
+                                    else -> doNothing()
+                                }
+                            } // end if position
+                            oldPosition = currentPosition
+                        } // end if state
+                    }
+                })
             }
             is ConcernViewHolder -> doNothing()
             else -> throw IllegalArgumentException()
