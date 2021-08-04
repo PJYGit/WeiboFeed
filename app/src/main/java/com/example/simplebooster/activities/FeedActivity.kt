@@ -20,6 +20,7 @@ import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 class FeedActivity : AppCompatActivity(), CoroutineScope {
+    // commit 2
     private lateinit var tabLayout: TabLayout
     private lateinit var job: Job
     lateinit var messageList: ArrayList<FeedMessage>
